@@ -32,7 +32,7 @@ def vote(request, question_pk):
 
         try:
             choice_pk = request.POST.get('vote')
-            choice = Choice.objects.get(pk=choice_pk)
+            choice = question.choice_set.get(pk=choice_pk)
             choice.votes += 1
             choice.save()
         except MultiValueDictKeyError:
